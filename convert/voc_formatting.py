@@ -4,19 +4,12 @@ from os import getcwd
 import pathlib
 import subprocess
 from PIL import Image
-#from os import listdir
-#import pickle
-#from os.path import join
-
 #
-sets=['train', 'val'] # 'test' labels are unavailable for equility of competition
+sets=['train', 'val'] # 
 classes = ['large-vehicle', 'swimming-pool', 'helicopter', 'bridge',
            'plane', 'ship', 'soccer-ball-field', 'basketball-field',
            'ground-track-field', 'small-vehicle', 'harbor', 'baseball-diamond',
            'tennis-court', 'roundabout', 'storage-tank']
-
-
-
 
 #
 def convert(size, box):
@@ -106,24 +99,6 @@ def convert_annotation( img_id, pth_imgs, pth_lbtxt, pth_antsn ):
     w=ET.ElementTree(root)
     w.write(pth_ot,'utf-8',True)
 
-    # in_file = open('%s/%s.xml'%(image_id))
-    # out_file = open('VOCdevkit/labels/%s.txt'%(image_id), 'w')
-    # tree = ET.parse(in_file)
-    # root = tree.getroot()
-    # size = root.find('size')
-    # w = int(size.find('width').text)
-    # h = int(size.find('height').text)
-    #
-    # for obj in root.iter('object'):
-    #     difficult = obj.find('difficult').text
-    #     cls = obj.find('name').text
-    #     if cls not in classes or int(difficult) == 1:
-    #         continue
-    #     cls_id = classes.index(cls)
-    #     xmlbox = obj.find('bndbox')
-    #     b = (float(xmlbox.find('xmin').text), float(xmlbox.find('xmax').text), float(xmlbox.find('ymin').text), float(xmlbox.find('ymax').text))
-    #     bb = convert((w,h), b)
-    #     out_file.write(str(cls_id) + " " + " ".join([str(a) for a in bb]) + '\n')
 
 
 #
@@ -155,11 +130,7 @@ for image_set in sets:
                 del lst_imgs[i]
             i = i-1
 
-    # write JPEGImages    PLEASE DO THIS BY HAND !!!!!!!!!!!!!!!!!!!
-    # fr__ = os.path.dirname(os.path.abspath( os.path.join(image_set,'images','*') ))
-    # to__ = os.path.dirname(os.path.abspath( paths__[1] ))
-    # subprocess.run('ln -sf {} {}'.format(fr__, to__))
-
+           
     # convert labels.txt to annotations.xml
     for img_id in lst_imgs:
         # img_id, pth_imgs, pth_lbtxt, pth_antsn
