@@ -138,22 +138,3 @@ for image_set in sets:
         pth_lbtxt = os.path.join(image_set,'labelTxt') # '{}/labelTxt'.format(image_set, img_id)
         pth_antsn = paths__[0]
         convert_annotation(img_id, pth_imgs, pth_lbtxt, pth_antsn )
-
-
-
-
-
-
-        #
-    # # get images in 'val' or 'train'
-    #     image_ids = open('VOCdevkit/ImageSets/%s.txt'%image_set).read().strip().split() # ids
-    # list_file = open('%s.txt'%(image_set), 'w') # open val.txt or train.txt
-    #
-    # # dealing each image
-    # for image_id in image_ids:
-    #     # writing val.txt or train.txt
-    #     list_file.write('%s/positive_images/%s.jpg\n'%(wd, image_id))
-    #     # convert labels to annotations
-    #     convert_annotation(image_id)
-    # list_file.close()
-
